@@ -1,16 +1,70 @@
 ---
+import ItemCount from "../components/ItemCount.astro";
+import TodoList from "../components/TodoList.astro";
+import { getItemsLeft, getTodos } from "../data/todos";
+import Layout from "../layouts/Page.astro";
 
+const { filter } = Astro.locals;
+
+const todos = getTodos(filter);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <section class="todoapp" 
+  hx-vals={`{ "filter": "${Astro.locals.filter}" }`}>
+    <header class="header">
+      <h1>Todos</h1>
+      <form
+        hx-post="/partials/todos"
+        hx-target="#todo-list"
+        hx-swap="afterbegin"
+        _="on htmx:afterOnLoad set #txtTodo.value to ''"
+      >
+        <input
+          type="text"
+          id="txtTodo"
+          class="new-todo"
+          name="todo"
+          placeholder="What needs to be done?"
+          autofocus
+        />
+      </form>
+    </header>
+    <section class="main">
+      <input type="checkbox" id="toggle-all" class="toggle-all" />
+      <label for="toggle-all">Mark all as complete</label>
+      <ul id="todo-list" class="todo-list">
+        <TodoList {todos} />
+      </ul>
+    </section>
+    <footer class="footer">
+      <ItemCount itemCount={getItemsLeft()} />
+
+      <ul class="filters">
+        <li>
+          <a href="/?filter=all" class:list={{ selected: filter === "all" }}
+            >All</a
+          >
+        </li><li>
+          <a
+            href="/?filter=active"
+            class:list={{ selected: filter === "active" }}>Active</a
+          >
+        </li><li>
+          <a
+            href="/?filter=completed"
+            class:list={{ selected: filter === "completed" }}>Completed</a
+          >
+        </li>
+      </ul>
+
+      <button
+        class="clear-completed"
+        hx-post="/partials/todos/clear-completed"
+        hx-target="#todo-list"
+      >
+        Clear completed
+      </button>
+    </footer>
+  </section>
+</Layout>

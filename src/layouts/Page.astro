@@ -1,0 +1,27 @@
+---
+import '../styles/todomvc-common/base.css'
+import '../styles/todomvc-app-css/index.css'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro • TodoMVC</title>
+</head>
+<body>
+    <slot />
+
+
+    <footer class="info">
+        <p>Click to edit a todo</p>
+        <p>Created by <a href="https://tonysull.co">Tony Sullivan</a></p>
+        <p>Part of <a href="https://todomvc.com">TodoMVC</a></p>
+      </footer>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+</body>
+</html>

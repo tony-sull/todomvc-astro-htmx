@@ -1,0 +1,12 @@
+---
+import type { Todo } from "../data/todos";
+import TodoItem from "./TodoItem.astro";
+
+export interface Props {
+    todos: Todo[]
+}
+
+const { todos } = Astro.props
+---
+
+{todos.map((todo) => (<TodoItem {todo} />))}

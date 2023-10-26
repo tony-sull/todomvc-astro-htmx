@@ -1,0 +1,29 @@
+---
+import ItemCount from '../../../components/ItemCount.astro'
+import TodoItem from '../../../components/TodoItem.astro'
+import { deleteById, getItemsLeft, todos, updateTodo } from '../../../data/todos'
+
+export const partial = true
+
+const { id } = Astro.params as { id: string }
+
+let todo = todos.find((todo) => todo.id === id)
+
+if (!todo) {
+    return Astro.redirect(null, 404)
+}
+
+if (Astro.request.method === 'DELETE') {
+    deleteById(id)
+} else if (Astro.request.method === 'PATCH') {
+    todo = updateTodo(id, { done: !todo.done })
+} else {
+    return Astro.redirect(null, 404)
+}
+---
+
+<ItemCount itemCount={getItemsLeft()} />
+
+{Astro.request.method === 'PATCH' && (
+    <TodoItem {todo} />
+)}

@@ -1,0 +1,21 @@
+---
+import { todos } from '../../../../data/todos'
+
+export const partial = true
+
+if (Astro.request.method !== 'GET') {
+    return Astro.redirect(null, 404)
+}
+
+const { id } = Astro.params as { id: string }
+
+const todo = todos.find((todo) => todo.id === id)
+
+if (!todo) {
+    return Astro.redirect(null, 404)
+}
+---
+
+<form hx-post={`/partials/todos/update/${id}`}>
+    <input type="text" name="text" value={todo.name} class="edit">
+</form>

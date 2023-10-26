@@ -1,0 +1,26 @@
+---
+import ItemCount from '../../../../components/ItemCount.astro'
+import TodoItem from '../../../../components/TodoItem.astro'
+import { getItemsLeft, todos, updateTodo } from '../../../../data/todos'
+
+export const partial = true
+
+if (Astro.request.method !== 'POST') {
+    return Astro.redirect(null, 404)
+}
+
+const { id } = Astro.params as { id: string }
+
+let todo = todos.find((todo) => todo.id === id)
+
+if (!todo) {
+    return Astro.redirect(null, 404)
+}
+
+const { name } = JSON.parse(await Astro.request.text())
+
+todo = updateTodo(id, {name})
+---
+
+<TodoItem {todo} />
+<ItemCount itemCount={getItemsLeft()} />

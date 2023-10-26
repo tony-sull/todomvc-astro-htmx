@@ -7,11 +7,19 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/check": "^0.2.1",
+    "@astrojs/node": "^6.0.3",
     "astro": "^3.3.4",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.6",
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1"
   }
 }

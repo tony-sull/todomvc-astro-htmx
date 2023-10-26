@@ -1,47 +1,40 @@
-# Astro Starter Kit: Minimal
+# htmx • Astro • [TodoMVC](http://todomvc.com)
 
-```sh
-npm create astro@latest -- --template minimal
-```
+> htmx - high power tools for HTML
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+![todomvc htmx demo gif](todomvc-htmx.gif)
 
-## 🚀 Project Structure
+## Astro Resources
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Website](https://astro.build)
+- [Documentation](https://docs.astro.build)
+- [Discord](https://astro.build/chat)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## HTMX Resources
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- [Website](https://htmx.org)
+- [Documentation](https://htmx.org/docs)
+- [Discord](https://htmx.org/discord)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### HTMX Articles
 
-Any static assets, like images, can be placed in the `public/` directory.
+- [Locality of Behavior](https://htmx.org/essays/locality-of-behaviour)
+- [Complexity Budget](https://htmx.org/essays/complexity-budget)
+- [SPA Alternative](https://htmx.org/essays/spa-alternative)
 
-## 🧞 Commands
+### Support
 
-All commands are run from the root of the project, from a terminal:
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/htmx)
+- [Twitter](http://twitter.com/htmx_org)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
 
-## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Implementation
+
+This app was created as [Astro](https://astro.build) app using the [@astrojs/node adapter](https://docs.astro.build/en/guides/integrations-guide/node/), experimental [HTML partials support](https://github.com/withastro/astro/pull/8755), and [htmx](https://htmx.org) plus [hyperscript](https://hyperscript.org) for managing client-side interactivity and partial re-renders.
+
+## Credit
+
+Based on the original htmx • TodoMVC implementation by [Rajasegar Chandran](https://twitter.com/rajasegar_c)

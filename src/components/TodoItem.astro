@@ -1,0 +1,17 @@
+---
+import type {Todo} from '../data/todos'
+
+export interface Props {
+    todo: Todo
+}
+
+const { todo } = Astro.props
+---
+
+<li id={`todo-${todo.id}`} class:list={{ completed: todo.done === true }}>
+    <div class="view">
+        <input type="checkbox" class="toggle" hx-patch={`/partials/todos/${todo.id}`} checked={todo.done} hx-target={`#todo-${todo.id}`} hx-swap="outerHTML">
+        <label hx-get={`/partials/todos/edit/${todo.id}`} hx-target={`#todo-${todo.id}`} hx-swap="outerHTML"><strong>{todo.name}</strong></label>
+        <button class="destroy" hx-delete={`/partials/todos/${todo.id}`} _={`on htmx:afterOnLoad remove #todo-${todo.id}`}></button>
+    </div>
+</li>

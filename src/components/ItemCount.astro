@@ -1,0 +1,11 @@
+--- 
+interface Props {
+    itemCount: number
+}
+
+const { itemCount } = Astro.props
+---
+
+<span id="todo-count" class="todo-count" hx-swap-oob="true">
+    <strong>{itemCount}</strong> item{itemCount === 1 ? '' : 's'} left    
+</span>
