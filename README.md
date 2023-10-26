@@ -34,4 +34,4 @@ This app was created as [Astro](https://astro.build) app using the [@astrojs/nod
 
 ## Credit
 
-Based on the original htmx • TodoMVC implementation by [Rajasegar Chandran](https://twitter.com/rajasegar_c)
+Based on the original [htmx • TodoMVC](https://github.com/rajasegar/todomvc-htmx) implementation by [Rajasegar Chandran](https://twitter.com/rajasegar_c)
