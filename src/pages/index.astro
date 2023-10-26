@@ -10,8 +10,7 @@ const todos = getTodos(filter);
 ---
 
 <Layout>
-  <section class="todoapp" 
-  hx-vals={`{ "filter": "${Astro.locals.filter}" }`}>
+  <section class="todoapp" hx-vals={`{ "filter": "${Astro.locals.filter}" }`}>
     <header class="header">
       <h1>Todos</h1>
       <form
@@ -42,15 +41,17 @@ const todos = getTodos(filter);
 
       <ul class="filters">
         <li>
-          <a href="/?filter=all" class:list={{ selected: filter === "all" }}
-            >All</a
-          >
-        </li><li>
+          <a href="/?filter=all" class:list={{ selected: filter === "all" }}>
+            All
+          </a>
+        </li>
+        <li>
           <a
             href="/?filter=active"
             class:list={{ selected: filter === "active" }}>Active</a
           >
-        </li><li>
+        </li>
+        <li>
           <a
             href="/?filter=completed"
             class:list={{ selected: filter === "completed" }}>Completed</a

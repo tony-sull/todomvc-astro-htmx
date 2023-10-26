@@ -29,6 +29,10 @@ export function getTodos(filter: TodoFilter) {
     : todos;
 }
 
+export function getTodoById(id: string) {
+  return todos.find((todo) => todo.id === id)
+}
+
 export function getItemsLeft() {
   return todos.filter((todo) => !todo.done).length;
 }

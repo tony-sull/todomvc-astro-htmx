@@ -1,13 +1,13 @@
 ---
 import ItemCount from '../../../components/ItemCount.astro'
 import TodoItem from '../../../components/TodoItem.astro'
-import { deleteById, getItemsLeft, todos, updateTodo } from '../../../data/todos'
+import { deleteById, getItemsLeft, getTodoById, updateTodo } from '../../../data/todos'
 
 export const partial = true
 
 const { id } = Astro.params as { id: string }
 
-let todo = todos.find((todo) => todo.id === id)
+let todo = getTodoById(id)
 
 if (!todo) {
     return Astro.redirect(null, 404)

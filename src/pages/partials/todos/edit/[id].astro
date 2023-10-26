@@ -1,5 +1,5 @@
 ---
-import { todos } from '../../../../data/todos'
+import { getTodoById } from '../../../../data/todos'
 
 export const partial = true
 
@@ -9,7 +9,7 @@ if (Astro.request.method !== 'GET') {
 
 const { id } = Astro.params as { id: string }
 
-const todo = todos.find((todo) => todo.id === id)
+const todo = getTodoById(id)
 
 if (!todo) {
     return Astro.redirect(null, 404)
