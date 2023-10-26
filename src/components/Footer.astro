@@ -1,0 +1,32 @@
+---
+import { getActiveItemsCount, getCompletedItemsCount } from "../data/todos";
+import ClearCompleted from "./ClearCompleted.astro";
+import ItemCount from "./ItemCount.astro";
+
+const { filter } = Astro.locals;
+---
+
+<footer class="footer" id="footer" hx-swap-oob="true">
+  <ItemCount itemCount={getActiveItemsCount()} />
+
+  <ul class="filters">
+    <li>
+      <a href="/?filter=all" class:list={{ selected: filter === "all" }}>
+        All
+      </a>
+    </li>
+    <li>
+      <a href="/?filter=active" class:list={{ selected: filter === "active" }}
+        >Active</a
+      >
+    </li>
+    <li>
+      <a
+        href="/?filter=completed"
+        class:list={{ selected: filter === "completed" }}>Completed</a
+      >
+    </li>
+  </ul>
+
+  {getCompletedItemsCount() > 0 && <ClearCompleted />}
+</footer>

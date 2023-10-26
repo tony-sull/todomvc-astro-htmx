@@ -1,0 +1,12 @@
+---
+import Footer from "../../components/Footer.astro";
+
+// Convenience wrapper to make sure the footer is always updated when
+// a partial request changes the list of todos
+
+// This isn't too helpful here, but can be a powerful pattern if more parts
+// of the UI need to leverage out-of-band updates later
+---
+
+<Footer />
+<slot />

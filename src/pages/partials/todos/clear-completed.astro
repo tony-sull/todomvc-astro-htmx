@@ -1,18 +1,19 @@
 ---
-import ItemCount from '../../../components/ItemCount.astro'
-import TodoList from '../../../components/TodoList.astro'
-import { clearCompleted, getItemsLeft, getTodos } from '../../../data/todos'
+import TodoList from "../../../components/TodoList.astro";
+import { clearCompleted, getTodos } from "../../../data/todos";
+import TodoUpdate from "../_todo-update.astro";
 
-export const partial = true
+export const partial = true;
 
-if (Astro.request.method !== 'POST') {
-    return Astro.redirect(null, 404)
+if (Astro.request.method !== "POST") {
+  return Astro.redirect(null, 404);
 }
 
-clearCompleted()
+clearCompleted();
 
-const todos = getTodos(Astro.locals.filter)
+const todos = getTodos(Astro.locals.filter);
 ---
 
-<ItemCount itemCount={getItemsLeft()} />
-<TodoList {todos} />
+<TodoUpdate>
+  <TodoList {todos} />
+</TodoUpdate>

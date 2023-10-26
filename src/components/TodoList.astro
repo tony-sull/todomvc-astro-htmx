@@ -3,10 +3,10 @@ import type { Todo } from "../data/todos";
 import TodoItem from "./TodoItem.astro";
 
 export interface Props {
-    todos: Todo[]
+  todos: Todo[];
 }
 
-const { todos } = Astro.props
+const { todos } = Astro.props;
 ---
 
-{todos.map((todo) => (<TodoItem {todo} />))}
+{todos.map((todo) => <TodoItem {todo} />)}

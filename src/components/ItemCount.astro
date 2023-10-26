@@ -1,11 +1,9 @@
---- 
-interface Props {
-    itemCount: number
-}
+---
+import { getActiveItemsCount } from "../data/todos";
 
-const { itemCount } = Astro.props
+const itemsLeft = getActiveItemsCount();
 ---
 
-<span id="todo-count" class="todo-count" hx-swap-oob="true">
-    <strong>{itemCount}</strong> item{itemCount === 1 ? '' : 's'} left    
+<span id="todo-count" class="todo-count">
+  <strong>{itemsLeft}</strong> item{itemsLeft === 1 ? "" : "s"} left
 </span>

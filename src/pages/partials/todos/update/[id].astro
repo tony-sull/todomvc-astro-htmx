@@ -1,26 +1,27 @@
 ---
-import ItemCount from '../../../../components/ItemCount.astro'
-import TodoItem from '../../../../components/TodoItem.astro'
-import { getItemsLeft, getTodoById, updateTodo } from '../../../../data/todos'
+import TodoItem from "../../../../components/TodoItem.astro";
+import { getTodoById, updateTodo } from "../../../../data/todos";
+import TodoUpdate from "../../_todo-update.astro";
 
-export const partial = true
+export const partial = true;
 
-if (Astro.request.method !== 'POST') {
-    return Astro.redirect(null, 404)
+if (Astro.request.method !== "POST") {
+  return Astro.redirect(null, 404);
 }
 
-const { id } = Astro.params as { id: string }
+const { id } = Astro.params as { id: string };
 
-let todo = getTodoById(id)
+let todo = getTodoById(id);
 
 if (!todo) {
-    return Astro.redirect(null, 404)
+  return Astro.redirect(null, 404);
 }
 
-const { name } = JSON.parse(await Astro.request.text())
+const { name } = JSON.parse(await Astro.request.text());
 
-todo = updateTodo(id, {name})
+todo = updateTodo(id, { name });
 ---
 
-<TodoItem {todo} />
-<ItemCount itemCount={getItemsLeft()} />
+<TodoUpdate>
+  <TodoItem {todo} />
+</TodoUpdate>

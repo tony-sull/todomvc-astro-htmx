@@ -1,12 +1,17 @@
 ---
+import Footer from "../components/Footer.astro";
 import ItemCount from "../components/ItemCount.astro";
 import TodoList from "../components/TodoList.astro";
 import { getItemsLeft, getTodos } from "../data/todos";
 import Layout from "../layouts/Page.astro";
+import ClearCompleted from "./partials/todos/clear-completed.astro";
 
 const { filter } = Astro.locals;
 
 const todos = getTodos(filter);
+
+const allChecked = !todos.some((todo) => !todo.done)
+console.log(allChecked)
 ---
 
 <Layout>
@@ -36,36 +41,6 @@ const todos = getTodos(filter);
         <TodoList {todos} />
       </ul>
     </section>
-    <footer class="footer">
-      <ItemCount itemCount={getItemsLeft()} />
-
-      <ul class="filters">
-        <li>
-          <a href="/?filter=all" class:list={{ selected: filter === "all" }}>
-            All
-          </a>
-        </li>
-        <li>
-          <a
-            href="/?filter=active"
-            class:list={{ selected: filter === "active" }}>Active</a
-          >
-        </li>
-        <li>
-          <a
-            href="/?filter=completed"
-            class:list={{ selected: filter === "completed" }}>Completed</a
-          >
-        </li>
-      </ul>
-
-      <button
-        class="clear-completed"
-        hx-post="/partials/todos/clear-completed"
-        hx-target="#todo-list"
-      >
-        Clear completed
-      </button>
-    </footer>
+    <Footer />
   </section>
 </Layout>

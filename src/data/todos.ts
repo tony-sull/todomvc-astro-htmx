@@ -37,6 +37,14 @@ export function getItemsLeft() {
   return todos.filter((todo) => !todo.done).length;
 }
 
+export function getActiveItemsCount() {
+  return todos.filter((todo) => !todo.done).length;
+}
+
+export function getCompletedItemsCount() {
+  return todos.filter((todos) => todos.done).length;
+}
+
 export function createTodo(name: string) {
   const newTodo = {
     id: uuid(),

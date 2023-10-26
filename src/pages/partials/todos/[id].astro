@@ -1,7 +1,7 @@
 ---
-import ItemCount from '../../../components/ItemCount.astro'
 import TodoItem from '../../../components/TodoItem.astro'
-import { deleteById, getItemsLeft, getTodoById, updateTodo } from '../../../data/todos'
+import { deleteById, getTodoById, updateTodo } from '../../../data/todos'
+import TodoUpdate from '../_todo-update.astro'
 
 export const partial = true
 
@@ -22,8 +22,8 @@ if (Astro.request.method === 'DELETE') {
 }
 ---
 
-<ItemCount itemCount={getItemsLeft()} />
-
-{Astro.request.method === 'PATCH' && (
-    <TodoItem {todo} />
-)}
+<TodoUpdate>
+    {Astro.request.method === 'PATCH' && (
+        <TodoItem {todo} />
+    )}
+</TodoUpdate>
