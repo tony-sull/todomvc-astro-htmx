@@ -17,7 +17,9 @@ if (!todo) {
   return Astro.redirect(null, 404);
 }
 
-const { name } = JSON.parse(await Astro.request.text());
+const formData = await Astro.request.formData()
+
+const name = formData.get('text')?.toString() ?? todo.name;
 
 todo = updateTodo(id, { name });
 ---
