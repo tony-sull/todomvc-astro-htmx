@@ -2,9 +2,6 @@
 
 > htmx - high power tools for HTML
 
-
-![todomvc htmx demo gif](todomvc-htmx.gif)
-
 ## Astro Resources
 
 - [Website](https://astro.build)
