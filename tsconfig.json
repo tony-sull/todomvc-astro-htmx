@@ -1,3 +1,4 @@
 {
-  "extends": "astro/tsconfigs/strictest"
+  "extends": "astro/tsconfigs/strictest",
+  "include": ["src", "hyperscript-attributes.d.ts"] // Include your declaration file here
 }
